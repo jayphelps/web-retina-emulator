@@ -14,3 +14,4 @@ Known Issues
 
   * Fixed positioned elements may shift in WebKit browsers because of issues with position: fixed; and -webkit-transform's. WebKit has been fixed but the patch hasn't made it into any Chrome/Safari release yet.
   * Firefox doesn't allow JavaScript that was copy-pasted in the URL to have access to most things so this script can't run. Use a bookmarklet instead.
+  * Doesn't trigger CSS media queries that that use device pixel ratio/min-resolution; so if you use these you'll need to temporarily adjust them. (Pull request anyone?)
