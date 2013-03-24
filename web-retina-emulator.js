@@ -27,17 +27,30 @@
         "transformOrigin": "0 0"
     };
 
-    function applyRetinaEmulation() {
+    var nonRetinaStyles = {
+        "transform": "",
+        "transformOrigin": ""
+    };
+
+    function toggleRetinaEmulation() {
         var prefix = getVendorPrefix();
         var bodyStyle = document.body.style;
+        var styles;
         var prefixedKey;
 
-        for (var key in retinaStyles) {
-            prefixedKey = prefix ? prefix + upperCaseFirst(key) : key;
-            bodyStyle[prefixedKey] = retinaStyles[key];
+        if (window.devicePixelRatio > 1) {
+            styles = nonRetinaStyles;
+            window.devicePixelRatio = 1;
+        }
+        else {
+            styles = retinaStyles;
+            window.devicePixelRatio = 2;
         }
 
-        window.devicePixelRatio = 2;
+        for (var key in styles) {
+            prefixedKey = prefix ? prefix + upperCaseFirst(key) : key;
+            bodyStyle[prefixedKey] = styles[key];
+        }
     }
 
     /**
@@ -52,8 +65,8 @@
     var handle = setInterval(function() {
         if (document.body) {
             clearInterval(handle);
-            applyRetinaEmulation();
+            toggleRetinaEmulation();
         }
     }, 10);
- 
+
 })(window, location);
