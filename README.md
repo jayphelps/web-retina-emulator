@@ -1,6 +1,8 @@
 WRE (Web Retina Emulator)
 =========================
 
+**Note: Chrome 32 now supports changing the Device Pixel Ratio via the new Emulation->Screen section. Unlike this script, using that new feature of Chrome will actually let you test everything pixel ratio related, including media queries. So yeah, use that instead of this.**
+
 For anyone who has a normal 72/96 dpi display but wants to get a "glance" at how their HTML is rendering for retina displays. It will basically just make your page twice as big, allowing you to quickly see what images are not retina-ready and also point out any CSS properties that may cause blurriness. (like 3d transforms)
 
 
